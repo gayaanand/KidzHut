@@ -64,6 +64,23 @@
                     <li>
                         <a href="contact.html">Register</a>
                     </li>
+                    
+                    <li>
+                        <div class='share-button'></div>
+                          <pre><span class="new">new</span> <span class="class">Share</span>(<span class="string">".share-button"</span>);</pre>
+                          <script src='build/share.js'></script>
+                          <script>
+                            var share = new Share(".share-button", {
+                              networks: {
+                                facebook: {
+                                  app_id: "602752456409826",
+                                }
+                              }
+                            });
+                          </script>
+                        
+                    </li>
+                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
