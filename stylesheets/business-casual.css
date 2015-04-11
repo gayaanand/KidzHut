@@ -197,6 +197,7 @@ ul.share-buttons{
 
 ul.share-buttons li{
   display: inline;
+ vertical-align: middle; 
 }
   
 
