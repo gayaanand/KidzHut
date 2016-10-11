@@ -251,9 +251,37 @@ Vist us at http://www.kidzhut.com/">
         "mm":true
     }
     </script>
-    <script src="https://c.paypal.com/da/r/fb-all-prod.pp2.min.js" integrity="sha384-oYkE8L8Q9kz6BaMfSYblw+cpzgZH8jJgMhG+xjJ04/p3xJD4tv7wpqbdXHmlaB0I" crossorigin="anonymous" >
-        
-    </script>    
+   
+<script type="text/javascript">
+    var scriptBaseURL = 'https://www.paypalobjects.com/webstatic/r/fb/';
+    var dom, doc, where, iframe = document.createElement('iframe');
+    iframe.src = "about:blank";
+    iframe.title = "";
+    iframe.role = "presentation"; // a11y
+    (iframe.frameElement || iframe).style.cssText = "width: 0; height: 0; border: 0";
+ 
+    where = document.getElementsByTagName('script');
+    where = where[where.length - 1];
+    where.parentNode.insertBefore(iframe, where);
+    try {
+        doc = iframe.contentWindow.document;
+    } catch (e) {
+        dom = document.domain;
+        iframe.src = "javascript:var d=document.open();d.domain='" + dom + "';void(0);";
+        doc = iframe.contentWindow.document;
+    }
+    doc.open()._l = function () {
+        var js = this.createElement("script");
+        if (dom) {
+            this.domain = dom;
+        }
+        js.id = "js-iframe-async";
+        js.src = scriptBaseURL + 'fb-all-prod.pp.min.js';
+        this.body.appendChild(js);
+    };
+    doc.write('<body onload="document._l();">');
+    doc.close();
+</script>
 
 </body>
 
