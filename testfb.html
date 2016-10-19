@@ -261,8 +261,7 @@ Vist us at http://www.kidzhut.com/">
     "true",
         telemetry
      = "false",
-        integrity.value
-     = "GbuHOs/SNY3qFe6jCGQYBbG4nIa4lQHxfN2h6o/9Zd71UZiRsPq7xFEk+viHgKiN";
+        integrity = "GbuHOs/SNY3qFe6jCGQYBbG4nIa4lQHxfN2h6o/9Zd71UZiRsPq7xFEk+viHgKiN";
 
     // Creates an iframe and script tag
     var dom, doc, where, iframe = document.createElement('iframe');
@@ -296,7 +295,7 @@ Vist us at http://www.kidzhut.com/">
         js.src = paypalJs;
 
         //adding integrity attribute to script tag as per ebay security standard.
-        js.setAttribute("integrity", "sha384-" + integrity.value);
+        js.setAttribute("integrity", "sha384-" + integrity);
         js.setAttribute("crossorigin", "anonymous");					    
         //s.parentElement.insertBefore(js, s);
         this.body.appendChild(js);
