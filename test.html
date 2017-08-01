@@ -36,6 +36,7 @@ Vist us at http://www.kidzhut.com/">
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
     
     
@@ -215,6 +216,8 @@ Vist us at http://www.kidzhut.com/">
     </div>
     <!-- /.container -->
 
+    <div id="paypal-button-container"></div>
+
     <footer>
         <div class="container">
             <div class="row">
@@ -243,6 +246,49 @@ Vist us at http://www.kidzhut.com/">
     })
     </script>
    
+  <script>
+        paypal.Button.render({
+
+            env: 'sandbox', // sandbox | production
+
+            // PayPal Client IDs - replace with your own
+            // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+            client: {
+                sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+                production: '<insert production client id>'
+            },
+
+            // Show the buyer a 'Pay Now' button in the checkout flow
+            commit: true,
+
+            // payment() is called when the button is clicked
+            payment: function(data, actions) {
+
+                // Make a call to the REST api to create the payment
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: '0.01', currency: 'USD' }
+                            }
+                        ]
+                    }
+                });
+            },
+
+            // onAuthorize() is called when the buyer approves the payment
+            onAuthorize: function(data, actions) {
+
+                // Make a call to the REST api to execute the payment
+                return actions.payment.execute().then(function() {
+                    window.alert('Payment Complete!');
+                });
+            }
+
+        }, '#paypal-button-container');
+
+    </script>
+
 <script type="text/javascript">
     var paypalJs = "https://c.paypal.com/webstatic/r/fb/fb-all-prod.akamai.pp2.min.js",
         corId = "96434f911570a93d14e30ae3ffc2346f",
